@@ -22,7 +22,7 @@ export default function MainPage() {
         dispatch(getPlayer(username));
         dispatch(getGames(username));
         dispatch(getGameDetails(username));
-    },[])
+    },[username])
 
     if (loading) {
         return <MainPageLoading />;

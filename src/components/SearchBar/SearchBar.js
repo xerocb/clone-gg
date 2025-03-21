@@ -1,23 +1,24 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styles from "./SearchBar.module.css";
 
-export default function SearchBar() {
-    const [searchTerm, setSearchTerm] = useState("");
+export default function SearchBar({ containerStyle, searchStyle }) {
+    const username = useSelector(state => state.player.player.username);
+    const [searchTerm, setSearchTerm] = useState(username ? username : "");
     const navigate = useNavigate();
     const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && e.target.value) {
             navigate(`/player/${searchTerm}`);
         }
     };
     
     return (
-        <div className={styles.container}>
+        <div className={containerStyle}>
             <input 
                 type="text" 
                 value={searchTerm}
                 placeholder="Player Name"
-                className={styles.search}
+                className={searchStyle}
                 onChange={(e)=>setSearchTerm(e.target.value)} 
                 onKeyDown={handleKeyDown} 
             />

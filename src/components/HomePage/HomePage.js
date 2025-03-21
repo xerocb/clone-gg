@@ -17,9 +17,9 @@ export default function HomePage() {
 
     return (
         <div className={styles.container}>
-            <Profile />
+            <Profile containerStyle={styles.profileContainer} linkStyle={styles.profileLink} />
             <img src="/logo512.png" alt="CloneGG logo" className={styles.image} />
-            <SearchBar />
+            <SearchBar containerStyle={styles.searchContainer} searchStyle={styles.searchBar} />
             {adminSection}
         </div>
     );

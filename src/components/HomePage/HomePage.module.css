@@ -4,7 +4,8 @@
 }
 
 .image {
-    height: 60vh;
+    height: 50vh;
+    margin: 5% auto;
 }
 
 .admin {
@@ -12,4 +13,56 @@
     text-align: center;
     padding: 0;
     margin: 0;
+}
+
+/* SearchBar */
+
+.searchContainer {
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+.searchBar {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #2a2a3d;
+    color: white;
+    outline: none;
+    width: 100%;
+}
+
+/* Profile */
+
+.profileContainer {
+    background-color: #5383e8;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    max-width: 600px;
+}
+
+.profileContainer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.profileLink {
+    text-decoration: none;
+    color: #b3cdff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.profileLink:hover {
+    color: white
 }
