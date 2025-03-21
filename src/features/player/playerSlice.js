@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getPlayerByUsername, getGamesByPlayerId, getGameDetailsByPlayerId } from "../../api";
+import { getPlayerByUsername, getGamesByUsername, getGameDetailsByUsername } from "../../api";
 
 export const getPlayer = createAsyncThunk("player/getPlayer", async (username, thunkAPI) => {
     try {
@@ -13,9 +13,9 @@ export const getPlayer = createAsyncThunk("player/getPlayer", async (username, t
     }
 });
 
-export const getGames = createAsyncThunk("player/getGames", async (playerId, thunkAPI) => {
+export const getGames = createAsyncThunk("player/getGames", async (username, thunkAPI) => {
     try {
-        const response = await getGamesByPlayerId(playerId);
+        const response = await getGamesByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }
@@ -25,9 +25,9 @@ export const getGames = createAsyncThunk("player/getGames", async (playerId, thu
     }
 });
 
-export const getGameDetails = createAsyncThunk("player/getGameDetails", async (playerId, thunkAPI) => {
+export const getGameDetails = createAsyncThunk("player/getGameDetails", async (username, thunkAPI) => {
     try {
-        const response = await getGameDetailsByPlayerId(playerId);
+        const response = await getGameDetailsByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }

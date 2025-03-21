@@ -1,0 +1,17 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.side * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+    .main {
+        display: block;
+    }
+}

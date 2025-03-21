@@ -1,7 +1,7 @@
 // userSlice
 
 export const attemptLogin = async (username, password) => {
-    return new Response({ id: 1, admin: true });
+    return new Response(JSON.stringify({ id: 1, admin: true }));
 };
 
 export const attemptLogout = async () => {
@@ -11,16 +11,16 @@ export const attemptLogout = async () => {
 // playerSlice
 
 export const getPlayerByUsername = async (username) => {
-    return new Response({
+    return new Response(JSON.stringify({
         id: 1,
         username: "PlayerOne",
         elo: 1000,
         icon_id: 1
-    });
+    }));
 };
 
-export const getGamesByPlayerId = async (playerId) => {
-    return new Response([
+export const getGamesByUsername = async (username) => {
+    return new Response(JSON.stringify([
         {
             id: 1,
             winning_team: "red",
@@ -39,11 +39,11 @@ export const getGamesByPlayerId = async (playerId) => {
             game_start: "2025-03-14T23:54:47.111Z",
             game_end: "2025-03-15T00:19:03.123Z"
         }
-    ]);
+    ]));
 };
 
-export const getGameDetailsByPlayerId = async (playerId) => {
-    return new Response([
+export const getGameDetailsByUsername = async (username) => {
+    return new Response(JSON.stringify([
         [
             {
                 id: 1,
@@ -470,5 +470,5 @@ export const getGameDetailsByPlayerId = async (playerId) => {
                 creep_score: 20
             }
         ]
-    ]);
+    ]));
 };
