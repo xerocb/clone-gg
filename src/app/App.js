@@ -3,9 +3,9 @@ import HomePage from "../components/HomePage/HomePage";
 
 export default function App() {
 	const router = createBrowserRouter(
-		createRoutesFromElements(
+		createRoutesFromElements([
 			<Route path="/" element={<HomePage />} />
-		)
+		])
 	);
 
 	return <RouterProvider router={router} />;
