@@ -1,0 +1,15 @@
+.container * {
+    display: block;
+    margin: 0 auto;
+}
+
+.image {
+    height: 60vh;
+}
+
+.admin {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}

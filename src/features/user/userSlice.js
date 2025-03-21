@@ -29,8 +29,8 @@ export const logout = createAsyncThunk("user/logout", async (arg, thunkAPI) => {
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        id: 0,
-        admin: false,
+        id: 1,
+        admin: true,
         loading: false,
         error: null
     },
@@ -42,6 +42,7 @@ const userSlice = createSlice({
             })
             .addCase(logout.fulfilled, (state) => {
                 state.id = 0;
+                state.admin = false;
             })
             .addMatcher(
                 (action) => action.type.endsWith("/pending"),

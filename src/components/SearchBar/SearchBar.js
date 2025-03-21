@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPlayer } from "../../features/player/playerSlice";
 import { useNavigate } from "react-router-dom";
+import styles from "./SearchBar.module.css";
 
 export default function SearchBar() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -15,11 +16,15 @@ export default function SearchBar() {
     };
     
     return (
-        <input 
-            type="text" 
-            value={searchTerm} 
-            onChange={(e)=>setSearchTerm(e.target.value)} 
-            onKeyDown={handleKeyDown} 
-        />
+        <div className={styles.container}>
+            <input 
+                type="text" 
+                value={searchTerm}
+                placeholder="Player Name"
+                className={styles.search}
+                onChange={(e)=>setSearchTerm(e.target.value)} 
+                onKeyDown={handleKeyDown} 
+            />
+        </div>
     );
 }

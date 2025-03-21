@@ -2,12 +2,13 @@ import React from "react";
 import Profile from "../Profile/Profile";
 import SearchBar from "../SearchBar/SearchBar";
 import { useSelector } from "react-redux";
+import styles from "./HomePage.module.css";
 
 export default function HomePage() {
     const admin = useSelector(state => state.user.admin);
     const adminSection = admin ? (
         <div>
-            <ul>
+            <ul className={styles.admin}>
                 <li>Admin Function 1</li>
                 <li>Admin Function 2</li>
             </ul>
@@ -15,9 +16,9 @@ export default function HomePage() {
     ): null;
 
     return (
-        <div>
+        <div className={styles.container}>
             <Profile />
-            <img src="../../../public/logo512.png" alt="CloneGG logo" />
+            <img src="/logo512.png" alt="CloneGG logo" className={styles.image} />
             <SearchBar />
             {adminSection}
         </div>
