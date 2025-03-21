@@ -30,13 +30,15 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         id: 0,
+        admin: false,
         loading: false,
         error: null
     },
     extraReducers: (builder) => {
         builder
             .addCase(login.fulfilled, (state, action) => {
-                state.id = action.payload;
+                state.id = action.payload.id;
+                state.admin = action.payload.admin;
             })
             .addCase(logout.fulfilled, (state) => {
                 state.id = 0;

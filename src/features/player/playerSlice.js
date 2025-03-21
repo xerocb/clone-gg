@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getPlayerByUsername, getGamesByPlayerId, getGameDetailsByPlayerId } from "../../api";
 
 export const getPlayer = createAsyncThunk("player/getPlayer", async (username, thunkAPI) => {
     try {

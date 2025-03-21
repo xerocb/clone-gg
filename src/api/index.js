@@ -1,7 +1,7 @@
 // userSlice
 
 export const attemptLogin = async (username, password) => {
-    return new Response({ id: 1 });
+    return new Response({ id: 1, admin: true });
 };
 
 export const attemptLogout = async () => {
