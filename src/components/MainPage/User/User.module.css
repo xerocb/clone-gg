@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     background-color: #2a2a3d;
-    height: 30vh;
 }
 
 .image {

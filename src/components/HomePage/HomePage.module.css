@@ -4,7 +4,7 @@
 }
 
 .image {
-    height: 50vh;
+    max-width: 20%;
     margin: 5% auto;
 }
 

@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.elo {
+    margin: auto 1rem;
+}
+
+.minor {
+    text-align: right;
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    color: #bbbbbb
+}
