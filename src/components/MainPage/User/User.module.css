@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #2a2a3d;
+    height: 30vh;
+}
+
+.image {
+    height: 90%;
+    margin: auto;
+}
+
+.username {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
