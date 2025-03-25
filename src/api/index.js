@@ -545,4 +545,46 @@ export const getFavChampDataByPlayerId = async (playerId) => {
             games: 38
         }
     ]));
-}
+};
+
+// RecentlyPlayed
+
+export const getRecentlyPlayedByPlayerId = async (playerId) => {
+    return new Response(JSON.stringify([
+        {
+            name: "PlayerTwo",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerThree",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerFour",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerFive",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerSix",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerSeven",
+            wins: 9,
+            losses: 11
+        },
+        {
+            name: "PlayerEight",
+            wins: 9,
+            losses: 11
+        }
+    ]));
+};

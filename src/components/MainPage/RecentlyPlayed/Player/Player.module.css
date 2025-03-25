@@ -21,19 +21,23 @@
 }
 
 .main {
-    text-align: left;
+    justify-content: left;
     width: 90%;
     padding: 0.2rem;
+    align-items: center;
+    display: flex;
 }
 
-.kda {
+.games {
     text-align: center;
     padding: 0.2rem;
 }
 
 .winrate {
-    text-align: right;
     padding: 0.2rem;
+    align-items: center;
+    display: flex;
+    justify-content: right;
 }
 
 .top {
@@ -47,4 +51,11 @@
 
 .name {
     color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.wr {
+    font-size: 0.9rem;
+    font-weight: bold;
 }

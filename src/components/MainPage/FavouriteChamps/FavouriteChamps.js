@@ -46,8 +46,8 @@ export default function FavouriteChamps() {
     return (
         <div className={styles.container}>
             <h3 className={styles.header}>Favourite Champions</h3>
-            {champs.slice(0, -1).map(champ => <Champion data={champ} last={false} />)}
-            {champs.slice(-1).map(champ => <Champion data={champ} last={true} />)}
+            {champs.slice(0, -1).map(champ => <Champion key={champ.name} data={champ} last={false} />)}
+            {champs.slice(-1).map(champ => <Champion key={champ.name} data={champ} last={true} />)}
         </div>
     );
 }
