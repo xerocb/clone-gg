@@ -1,6 +1,8 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: #2a2a3d;
+    width: 100%;
 }
 
 .elo {

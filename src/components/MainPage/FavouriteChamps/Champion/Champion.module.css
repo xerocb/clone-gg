@@ -1,0 +1,45 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
+    background-color: #2a2a3d;
+    width: 100%;
+    margin: 0.2rem 0;
+    border-radius: 0;
+    color: #bbbbbb;
+}
+
+.last {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.icon {
+    width: 90%;
+    margin: auto;
+}
+
+.main {
+    text-align: left;
+    width: 90%;
+}
+
+.kda {
+    text-align: center;
+}
+
+.winrate {
+    text-align: right;
+}
+
+.top {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.bottom {
+    font-size: 0.7rem;
+}
+
+.name {
+    color: white;
+}

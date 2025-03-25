@@ -476,3 +476,73 @@ export const getStatsByPlayerId = async (playerId) => {
         winrate: 67
     }));
 }
+
+// FavouriteChamps
+
+export const getFavChampDataByPlayerId = async (playerId) => {
+    return new Response(JSON.stringify([
+        {
+            name: "ChampOne",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampTwo",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampThree",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampFour",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampFive",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampSix",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        },
+        {
+            name: "ChampSeven",
+            cs: 200,
+            kills: 2.4,
+            deaths: 3.1,
+            assists: 5.6,
+            wins: 21,
+            games: 38
+        }
+    ]));
+}

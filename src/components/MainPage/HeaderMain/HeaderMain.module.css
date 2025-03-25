@@ -65,7 +65,7 @@
     color: white
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1120px) {
     .container {
         grid-template-columns: 1fr 1fr;
         column-gap: 1rem;
