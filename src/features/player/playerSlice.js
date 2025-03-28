@@ -3,11 +3,14 @@ import { getPlayerByUsername, getGamesByUsername, getGameDetailsByUsername } fro
 
 export const getPlayer = createAsyncThunk("player/getPlayer", async (username, thunkAPI) => {
     try {
+        console.log("Fetching player")
         const response = await getPlayerByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve player data`);
         }
-        return await response.json();
+        const data = await response.json();
+        console.log("Player fetched: ", data);
+        return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
     }
@@ -15,11 +18,14 @@ export const getPlayer = createAsyncThunk("player/getPlayer", async (username, t
 
 export const getGames = createAsyncThunk("player/getGames", async (username, thunkAPI) => {
     try {
+        console.log("Fetching games");
         const response = await getGamesByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }
-        return await response.json();
+        const data = await response.json();
+        console.log("Games fetched: ", data);
+        return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
     }
@@ -27,11 +33,14 @@ export const getGames = createAsyncThunk("player/getGames", async (username, thu
 
 export const getGameDetails = createAsyncThunk("player/getGameDetails", async (username, thunkAPI) => {
     try {
+        console.log("Fetching game details");
         const response = await getGameDetailsByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }
-        return await response.json();
+        const data = await response.json();
+        console.log("Game details fetched: ", data);
+        return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
     }
@@ -43,41 +52,58 @@ const playerSlice = createSlice({
         player: {},
         games: [],
         gameDetails: [],
-        loading: false,
-        error: null
+        loading: {
+            player: false,
+            games: false,
+            gameDetails: false
+        },
+        error: {
+            player: null,
+            games: null,
+            gameDetails: null
+        }
     },
     extraReducers: (builder) => {
         builder
+            .addCase(getPlayer.pending, (state) => {
+                state.loading.player = true;
+                state.error.player = null;
+            })
             .addCase(getPlayer.fulfilled, (state, action) => {
+                state.loading.player = false;
+                state.error.player = null;
                 state.player = action.payload;
             })
+            .addCase(getPlayer.rejected, (state, action) => {
+                state.loading.player = false;
+                state.error.player = action.payload;
+            })
+            .addCase(getGames.pending, (state) => {
+                state.loading.games = true;
+                state.error.games = null;
+            })
             .addCase(getGames.fulfilled, (state, action) => {
+                state.loading.games = false;
+                state.error.games = null;
                 state.games = action.payload;
             })
+            .addCase(getGames.rejected, (state, action) => {
+                state.loading.games = false;
+                state.error.games = action.payload;
+            })
+            .addCase(getGameDetails.pending, (state) => {
+                state.loading.gameDetails = true;
+                state.error.gameDetails = false;
+            })
             .addCase(getGameDetails.fulfilled, (state, action) => {
+                state.loading.gameDetails = false;
+                state.error.gameDetails = null;
                 state.gameDetails = action.payload;
             })
-            .addMatcher(
-                (action) => action.type.endsWith("/pending"),
-                (state) => {
-                    state.loading = true;
-                    state.error = null;
-                }
-            )
-            .addMatcher(
-                (action) => action.type.endsWith("/fulfilled"),
-                (state) => {
-                    state.loading = false;
-                    state.error = null;
-                }
-            )
-            .addMatcher(
-                (action) => action.type.endsWith("/rejected"),
-                (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }
-            )
+            .addCase(getGameDetails.rejected, (state, action) => {
+                state.loading.gameDetails = false;
+                state.error.gameDetails = action.payload;
+            })
     }
 });
 

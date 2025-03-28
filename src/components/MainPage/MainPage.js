@@ -11,10 +11,21 @@ import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import Games from "./Games/Games";
 import styles from "./MainPage.module.css";
 import { useParams } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
 
 export default function MainPage() {
-    const loading = useSelector(state => state.player.loading);
-    const error = useSelector(state => state.player.error);
+    const loading = useSelector(
+        createSelector(
+            (state) => state.player.loading,
+            (loading) => ({ ...loading })
+        )
+    );
+    const error = useSelector(
+        createSelector(
+            (state) => state.player.error,
+            (error) => ({ ...error })
+        )
+    );
     const username = useParams().username;
     const dispatch = useDispatch();
 
@@ -22,12 +33,12 @@ export default function MainPage() {
         dispatch(getPlayer(username));
         dispatch(getGames(username));
         dispatch(getGameDetails(username));
-    },[username])
+    },[dispatch, username])
 
-    if (loading) {
+    if (loading.player || loading.games || loading.gameDetails) {
         return <MainPageLoading />;
     }
-    if (error) {
+    if (error.player || error.games || error.gameDetails) {
         return <MainPageError error={error} />;
     }
 

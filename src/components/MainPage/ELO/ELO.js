@@ -6,7 +6,8 @@ import ELOError from "./ELOError";
 import styles from "./ELO.module.css";
 
 export default function ELO() {
-    const player = useSelector(state => state.player.player);
+    const playerId = useSelector(state => state.player.player.id);
+    const playerElo = useSelector(state => state.player.player.elo);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [stats, setStats] = useState({});
@@ -15,7 +16,7 @@ export default function ELO() {
         const getStats = async () => {
             setLoading(true);
             try {
-                const response = await getStatsByPlayerId(player.id);
+                const response = await getStatsByPlayerId(playerId);
                 const data = await response.json();
                 setStats(data);
             } catch(err) {
@@ -26,7 +27,7 @@ export default function ELO() {
         };
 
         getStats();
-    },[player]);
+    },[playerId]);
 
     if (loading) {
         return <ELOLoading />;
@@ -36,7 +37,7 @@ export default function ELO() {
     }
     return (
         <div className={styles.container}>
-            <h3 className={styles.elo}>ELO: {player.elo}</h3>
+            <h3 className={styles.elo}>ELO: {playerElo}</h3>
             <div className={styles.minor}>
                 <p>{stats.wins}W {stats.losses}L</p>
                 <p>Win rate {stats.winrate}%</p>
