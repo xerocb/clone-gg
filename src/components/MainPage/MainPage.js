@@ -16,14 +16,14 @@ import { createSelector } from "@reduxjs/toolkit";
 export default function MainPage() {
     const loading = useSelector(
         createSelector(
-            (state) => state.player.loading,
-            (loading) => ({ ...loading })
+            state => state.player.loading,
+            loading => ({ ...loading })
         )
     );
     const error = useSelector(
         createSelector(
-            (state) => state.player.error,
-            (error) => ({ ...error })
+            state => state.player.error,
+            error => ({ ...error })
         )
     );
     const username = useParams().username;

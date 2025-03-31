@@ -3,13 +3,11 @@ import { getPlayerByUsername, getGamesByUsername, getGameDetailsByUsername } fro
 
 export const getPlayer = createAsyncThunk("player/getPlayer", async (username, thunkAPI) => {
     try {
-        console.log("Fetching player")
         const response = await getPlayerByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve player data`);
         }
         const data = await response.json();
-        console.log("Player fetched: ", data);
         return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
@@ -18,13 +16,11 @@ export const getPlayer = createAsyncThunk("player/getPlayer", async (username, t
 
 export const getGames = createAsyncThunk("player/getGames", async (username, thunkAPI) => {
     try {
-        console.log("Fetching games");
         const response = await getGamesByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }
         const data = await response.json();
-        console.log("Games fetched: ", data);
         return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
@@ -33,13 +29,11 @@ export const getGames = createAsyncThunk("player/getGames", async (username, thu
 
 export const getGameDetails = createAsyncThunk("player/getGameDetails", async (username, thunkAPI) => {
     try {
-        console.log("Fetching game details");
         const response = await getGameDetailsByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
         }
         const data = await response.json();
-        console.log("Game details fetched: ", data);
         return data;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
@@ -53,9 +47,9 @@ const playerSlice = createSlice({
         games: [],
         gameDetails: [],
         loading: {
-            player: false,
-            games: false,
-            gameDetails: false
+            player: true,
+            games: true,
+            gameDetails: true
         },
         error: {
             player: null,

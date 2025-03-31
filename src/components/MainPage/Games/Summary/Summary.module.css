@@ -1,0 +1,139 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #2a2a3d;
+    margin-top: 0.2rem;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding: 0.2rem;
+}
+
+.column {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    color: #bbbbbb;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.wr {
+    font-size: 1.2rem;
+    text-align: center;
+    align-self: center;
+    font-weight: bolder;
+}
+
+.averages {
+    font-size: 0.8rem;
+    color: #bbbbbb;
+}
+
+.ratio {
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.pKill {
+    font-size: 0.8rem;
+    color: red;
+}
+
+.champs {
+    display: flex;
+    flex-direction: column;
+}
+
+.champ {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr;
+    align-items: center;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0 5%;
+    color: #bbbbbb;
+}
+
+.icon {
+    width: 90%;
+}
+
+.roles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    color: #bbbbbb;
+    font-weight: bold;
+}
+
+.champsMobile {
+    display: none;
+}
+
+.rolesMobile {
+    display: none;
+}
+
+.mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 1120px) {
+    .champs {
+        display: none;
+    }
+
+    .roles {
+        display: none;
+    }
+
+    .champsMobile {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .rolesMobile {
+        display: flex;
+        justify-content: center;
+    }
+
+    .header {
+        font-size: 0.8rem;
+    }
+
+    .details {
+        display: block;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .wr {
+        display: none;
+    }
+
+    .averages, .pKill {
+        margin: 0
+    }
+
+    .ratio {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .icon {
+        justify-self: center;
+        width: 40px;
+    }
+}

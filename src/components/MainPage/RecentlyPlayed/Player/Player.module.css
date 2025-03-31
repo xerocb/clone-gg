@@ -7,6 +7,7 @@
     border-radius: 0;
     color: #bbbbbb;
     padding: 0.2rem;
+    align-items: center;
 }
 
 .last {
@@ -58,4 +59,9 @@
 .wr {
     font-size: 0.9rem;
     font-weight: bold;
+}
+
+.link {
+    text-decoration: none;
+    display: flex;
 }

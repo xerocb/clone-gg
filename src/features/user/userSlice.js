@@ -31,7 +31,7 @@ const userSlice = createSlice({
     initialState: {
         id: 1,
         admin: true,
-        loading: false,
+        loading: true,
         error: null
     },
     extraReducers: (builder) => {

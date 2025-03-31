@@ -588,3 +588,20 @@ export const getRecentlyPlayedByPlayerId = async (playerId) => {
         }
     ]));
 };
+
+// Game
+
+export const getUsernamesByPlayerIds = async (playerIds) => {
+    return new Response(JSON.stringify([
+        "PlayerOne",
+        "PlayerTwo",
+        "PlayerThree",
+        "PlayerFour",
+        "PlayerFive",
+        "PlayerSix",
+        "PlayerSeven",
+        "PlayerEight",
+        "PlayerNine",
+        "PlayerTen"
+    ]));
+}
