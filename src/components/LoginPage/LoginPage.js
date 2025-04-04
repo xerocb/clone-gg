@@ -13,7 +13,6 @@ export default function LoginPage({ type }) {
     const [loginResponse, setLoginResponse] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const loginError = useSelector(state => state.user.error);
     const isSignup = type === "signup";
     const titleText = isSignup ? "Sign Up" : "Log In";
 
@@ -28,11 +27,11 @@ export default function LoginPage({ type }) {
                 setSignupResponse(json);
             }
         } else {
-            await dispatch(login({ username, password }));
-            if (loginError) {
-                setLoginResponse(loginError);
-            } else {
+            try {
+                await dispatch(login({ username, password })).unwrap();
                 navigate("/");
+            } catch(err) {
+                setLoginResponse(err);
             }
         }
     };
@@ -41,7 +40,7 @@ export default function LoginPage({ type }) {
         <div>
             <Header />
             <div className={styles.container}>
-                <h2>{titleText}</h2>
+                <h2 className={styles.header}>{titleText}</h2>
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <label htmlFor="username" className={styles.label}>Username</label>
                     <input 
@@ -61,8 +60,8 @@ export default function LoginPage({ type }) {
                         required />
                     <button type="submit" className={styles.button}>{titleText}</button>
                 </form>
-                {isSignup && signupResponse && <p className={styles.message}>{signupResponse}</p>}
-                {!isSignup && loginResponse && <p className={styles.message}>{loginResponse}</p> }
+                {isSignup && signupResponse && <p>{signupResponse}</p>}
+                {!isSignup && loginResponse && <p>{loginResponse}</p> }
             </div>
         </div>
     );
