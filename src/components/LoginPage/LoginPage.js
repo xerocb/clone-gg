@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LoginPage.module.css";
 import Header from "../Header/Header";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../features/user/userSlice";
 import { attemptSignup } from "../../api";
 import { useNavigate } from "react-router-dom";
