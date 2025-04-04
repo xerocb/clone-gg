@@ -20,7 +20,7 @@ export const logout = createAsyncThunk("user/logout", async (arg, thunkAPI) => {
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: Logout failed`);
         }
-        return await response.json();
+        return true;
     } catch(err) {
         return thunkAPI.rejectWithValue(err.message);
     }
@@ -45,6 +45,7 @@ const userSlice = createSlice({
             .addCase(logout.fulfilled, (state) => {
                 state.id = 0;
                 state.admin = false;
+                state.username = "";
             })
             .addMatcher(
                 (action) => action.type.endsWith("/pending"),
