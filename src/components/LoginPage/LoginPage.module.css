@@ -1,0 +1,19 @@
+.container, .form {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.label {
+    text-align: left;
+}
+
+.input {
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.button {
+    width: 50%;
+    justify-self: center;
+}

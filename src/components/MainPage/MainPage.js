@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainPageLoading from "./MainPageLoading";
 import MainPageError from "./MainPageError";
 import { getGameDetails, getGames, getPlayer } from "../../features/player/playerSlice";
-import HeaderMain from "./HeaderMain/HeaderMain";
+import Header from "../Header/Header";
 import User from "./User/User";
 import ELO from "./ELO/ELO";
 import FavouriteChamps from "./FavouriteChamps/FavouriteChamps";
@@ -45,7 +45,7 @@ export default function MainPage() {
     return (
         <div>
             <div>
-                <HeaderMain />
+                <Header />
                 <User />
             </div>
             <div className={styles.main}>

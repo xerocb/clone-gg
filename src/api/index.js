@@ -8,6 +8,12 @@ export const attemptLogout = async () => {
     return new Response(null, { status: 204 });
 };
 
+// LoginPage
+
+export const attemptSignup = async (username, password) => {
+    return new Response(null, { status: 201 });
+};
+
 // playerSlice
 
 export const getPlayerByUsername = async (username) => {

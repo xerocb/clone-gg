@@ -1,10 +1,10 @@
 import React from "react";
-import SearchBar from "../../SearchBar/SearchBar";
-import Profile from "../../Profile/Profile";
-import styles from "./HeaderMain.module.css";
+import SearchBar from "../SearchBar/SearchBar";
+import Profile from "../Profile/Profile";
+import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 
-export default function HeaderMain() {
+export default function Header() {
     return  (
         <div className={styles.container}>
             <Link to="/" className={styles.link}>
