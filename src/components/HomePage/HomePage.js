@@ -6,14 +6,7 @@ import styles from "./HomePage.module.css";
 
 export default function HomePage() {
     const admin = useSelector(state => state.user.admin);
-    const adminSection = admin ? (
-        <div>
-            <ul className={styles.admin}>
-                <li>Admin Function 1</li>
-                <li>Admin Function 2</li>
-            </ul>
-        </div>
-    ): null;
+    const adminSection = admin ? null : null;
 
     return (
         <div className={styles.container}>

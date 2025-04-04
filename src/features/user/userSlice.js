@@ -31,6 +31,7 @@ const userSlice = createSlice({
     initialState: {
         id: 0,
         admin: false,
+        username: "",
         loading: true,
         error: null
     },
@@ -39,6 +40,7 @@ const userSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.id = action.payload.id;
                 state.admin = action.payload.admin;
+                state.username = action.payload.username;
             })
             .addCase(logout.fulfilled, (state) => {
                 state.id = 0;

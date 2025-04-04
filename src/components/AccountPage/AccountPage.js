@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import styles from "../LoginPage/LoginPage.module.css";
+import Header from "../Header/Header";
+import { useSelector } from "react-redux";
+import { updatePassword } from "../../api";
+
+export default function AccountPage() {
+    const username = useSelector(state => state.user.username);
+    const userId = useSelector(state => state.user.id);
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const response = await updatePassword(userId, password);
+        if (response.ok) {
+            setMessage("Password successfully updated.");
+            setPassword("");
+        } else {
+            const json = await response.json();
+            setMessage(json);
+        }
+    };
+
+    return (
+        <div>
+            <Header />
+            <div className={styles.container}>
+                <h2 className={styles.header}>Profile</h2>
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <label htmlFor="username" className={styles.label}>Username</label>
+                    <input 
+                        id="username"
+                        className={styles.inputReadonly}
+                        type="text" 
+                        value={username} 
+                        readOnly />
+                    <label htmlFor="password" className={styles.label}>Password</label>
+                    <input 
+                        id="password"
+                        className={styles.input}
+                        type="password" 
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)}
+                        required />
+                    <button type="submit" className={styles.button}>Update Password</button>
+                </form>
+                {message && <p>{message}</p>}
+            </div>
+        </div>
+    );
+}

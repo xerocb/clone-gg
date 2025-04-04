@@ -1,7 +1,7 @@
 // userSlice
 
 export const attemptLogin = async (username, password) => {
-    return new Response(JSON.stringify({ id: 1, admin: true }));
+    return new Response(JSON.stringify({ id: 1, admin: true, username: "PlayerOne" }));
 };
 
 export const attemptLogout = async () => {
@@ -12,6 +12,12 @@ export const attemptLogout = async () => {
 
 export const attemptSignup = async (username, password) => {
     return new Response(null, { status: 201 });
+};
+
+// AccountPage
+
+export const updatePassword = async (userId, password) => {
+    return new Response(null, { status: 204 });
 };
 
 // playerSlice
