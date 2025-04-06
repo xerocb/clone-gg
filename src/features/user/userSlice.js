@@ -39,7 +39,7 @@ const userSlice = createSlice({
         builder
             .addCase(login.fulfilled, (state, action) => {
                 state.id = action.payload.id;
-                state.admin = action.payload.admin;
+                state.admin = action.payload.admin === "1";
                 state.username = action.payload.username;
             })
             .addCase(logout.fulfilled, (state) => {
