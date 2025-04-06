@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 
 export default function Player({ data, last }) {
     const style = last ? styles.last : null;
+    data.wins = Number(data.wins);
+    data.losses = Number(data.losses);
+    
     return (
         <div className={`${styles.container} ${style}`}>
-            <Link to={`/player/${data.name}`} className={styles.link}>
-                <img src="/logo192.png" alt={`${data.name} icon`} className={styles.icon} />
+            <Link to={`/player/${data.username}`} className={styles.link}>
+                <img src="/logo192.png" alt={`${data.username} icon`} className={styles.icon} />
             </Link>
-            <Link to={`/player/${data.name}`} className={styles.link}>
+            <Link to={`/player/${data.username}`} className={styles.link}>
                 <div className={styles.main}>
-                    <p className={styles.name}>{data.name}</p>
+                    <p className={styles.name}>{data.username}</p>
                 </div>
             </Link>
             <div className={styles.games}>

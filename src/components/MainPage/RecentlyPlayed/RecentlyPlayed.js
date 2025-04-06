@@ -41,8 +41,8 @@ export default function RecentlyPlayed() {
     return (
         <div className={styles.container}>
             <h3 className={styles.header}>Recently Played With</h3>
-            {players.slice(0, -1).map(player => <Player key={player.name} data={player} last={false} />)}
-            {players.slice(-1).map(player => <Player key={player.name} data={player} last={true} />)}
+            {players.slice(0, -1).map(player => <Player key={player.username} data={player} last={false} />)}
+            {players.slice(-1).map(player => <Player key={player.username} data={player} last={true} />)}
         </div>
     );
 }
