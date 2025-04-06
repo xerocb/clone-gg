@@ -7,19 +7,18 @@ import { Navigate } from "react-router-dom";
 
 export default function AccountPage() {
     const username = useSelector(state => state.user.username);
-    const userId = useSelector(state => state.user.id);
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await updatePassword(userId, password);
+        const response = await updatePassword(password);
         if (response.ok) {
             setMessage("Password successfully updated.");
             setPassword("");
         } else {
-            const json = await response.json();
-            setMessage(json);
+            const text = await response.text();
+            setMessage(text);
         }
     };
 

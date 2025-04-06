@@ -5,7 +5,7 @@ export const getPlayer = createAsyncThunk("player/getPlayer", async (username, t
     try {
         const response = await getPlayerByUsername(username);
         if (!response.ok) {
-            return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve player data`);
+            return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
         const data = await response.json();
         return data;
@@ -18,7 +18,7 @@ export const getGames = createAsyncThunk("player/getGames", async (username, thu
     try {
         const response = await getGamesByUsername(username);
         if (!response.ok) {
-            return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
+            return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
         const data = await response.json();
         return data;
@@ -31,7 +31,7 @@ export const getGameDetails = createAsyncThunk("player/getGameDetails", async (u
     try {
         const response = await getGameDetailsByUsername(username);
         if (!response.ok) {
-            return thunkAPI.rejectWithValue(`Error ${response.status}: Couldn't retrieve game data`);
+            return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
         const data = await response.json();
         return data;

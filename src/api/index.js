@@ -1,23 +1,72 @@
+const ROOT_URL = process.env.REACT_APP_ROOT_URL;
+
 // userSlice
 
 export const attemptLogin = async (username, password) => {
-    return new Response(JSON.stringify({ id: 1, admin: true, username: "PlayerOne" }));
+    const endpoint = `${ROOT_URL}/auth/login`;
+    
+    const response = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            password
+        }),
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    return response;
 };
 
 export const attemptLogout = async () => {
-    return new Response(null, { status: 204 });
+    const endpoint = `${ROOT_URL}/auth/logout`;
+
+    const response = await fetch(endpoint, {
+        method: "POST",
+        credentials: "include"
+    })
+
+    return response;
 };
 
 // LoginPage
 
 export const attemptSignup = async (username, password) => {
-    return new Response(null, { status: 201 });
+    const endpoint = `${ROOT_URL}/auth/signup`;
+
+    const response = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            password
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    return response;
 };
 
 // AccountPage
 
-export const updatePassword = async (userId, password) => {
-    return new Response(null, { status: 204 });
+export const updatePassword = async (password) => {
+    const endpoint = `${ROOT_URL}/auth/update`;
+
+    const response = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({
+            password
+        }),
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    return response;
 };
 
 // playerSlice

@@ -23,8 +23,8 @@ export default function LoginPage({ type }) {
             if (response.ok) {
                 setSignupResponse("Sign up successful! Please proceed to the login page and enter your credentials.");
             } else {
-                const json = await response.json();
-                setSignupResponse(json);
+                const text = await response.text();
+                setSignupResponse(text);
             }
         } else {
             try {

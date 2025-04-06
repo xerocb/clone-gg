@@ -6,7 +6,7 @@ export const login = createAsyncThunk("user/login", async (arg, thunkAPI) => {
     try {
         const response = await attemptLogin(username, password);
         if (!response.ok) {
-            return thunkAPI.rejectWithValue(`Error ${response.status}: Login failed`);
+            return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
         return await response.json();
     } catch(err) {
@@ -18,7 +18,7 @@ export const logout = createAsyncThunk("user/logout", async (arg, thunkAPI) => {
     try {
         const response = await attemptLogout();
         if (!response.ok) {
-            return thunkAPI.rejectWithValue(`Error ${response.status}: Logout failed`);
+            return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
         return true;
     } catch(err) {
