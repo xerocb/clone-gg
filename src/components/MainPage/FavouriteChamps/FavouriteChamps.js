@@ -17,8 +17,12 @@ export default function FavouriteChamps() {
             setLoading(true);
             try {
                 const response = await getFavChampDataByPlayerId(playerId);
-                const data = await response.json();
-                setChamps(data);
+                if (response.status === 204) {
+                    setChamps([]);
+                } else {
+                    const data = await response.json();
+                    setChamps(data);
+                }
             } catch(err) {
                 setError(err);
             } finally {

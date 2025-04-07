@@ -20,6 +20,9 @@ export const getGames = createAsyncThunk("player/getGames", async (username, thu
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
         }
+        if (response.status === 204) {
+            return [];
+        }
         const data = await response.json();
         return data;
     } catch(err) {
@@ -32,6 +35,9 @@ export const getGameDetails = createAsyncThunk("player/getGameDetails", async (u
         const response = await getGameDetailsByUsername(username);
         if (!response.ok) {
             return thunkAPI.rejectWithValue(`Error ${response.status}: ${await response.text()}`);
+        }
+        if (response.status === 204) {
+            return [];
         }
         const data = await response.json();
         return data;

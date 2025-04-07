@@ -14,3 +14,16 @@
     border-radius: 10px 10px 0 0;
     padding: 0.2rem;
 }
+
+.champ {
+    display: grid;
+    background-color: #2a2a3d;
+    width: 100%;
+    margin: 0.2rem 0;
+    border-radius: 0;
+    color: #bbbbbb;
+    padding: 1rem 0.2rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}

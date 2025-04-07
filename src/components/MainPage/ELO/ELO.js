@@ -17,8 +17,12 @@ export default function ELO() {
             setLoading(true);
             try {
                 const response = await getStatsByPlayerId(playerId);
-                const data = await response.json();
-                setStats(data);
+                if (response.status === 204) {
+                    setStats({});
+                } else {
+                    const data = await response.json();
+                    setStats(data);
+                }
             } catch(err) {
                 setError(err);
             } finally {
@@ -35,6 +39,18 @@ export default function ELO() {
     if (error) {
         return <ELOError error={error} />;
     }
+
+    if (Object.keys(stats).length === 0) {
+        return (
+            <div className={styles.container}>
+                <h3 className={styles.elo}>ELO: {playerElo}</h3>
+                <div className={styles.minor}>
+                    <p>No games played!</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <h3 className={styles.elo}>ELO: {playerElo}</h3>

@@ -17,8 +17,12 @@ export default function RecentlyPlayed() {
             setLoading(true);
             try {
                 const response = await getRecentlyPlayedByPlayerId(playerId);
-                const data = await response.json();
-                setPlayers(data);
+                if (response.status === 204) {
+                    setPlayers([]);
+                } else {
+                    const data = await response.json();
+                    setPlayers(data);
+                }
             } catch(err) {
                 setError(err);
             } finally {
@@ -36,7 +40,12 @@ export default function RecentlyPlayed() {
         return <RecentlyPlayedError error={error} />;
     }
     if (players.length === 0) {
-        return;
+        return (
+            <div className={styles.container}>
+                <h3 className={styles.header}>Recently Played With</h3>
+                <p className={styles.player}>No games played!</p>
+            </div>
+        );
     }
     return (
         <div className={styles.container}>

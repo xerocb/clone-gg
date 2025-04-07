@@ -13,6 +13,15 @@ export default function Games() {
         )
     );
 
+    if (gameIds.length === 0) {
+        return (
+            <div>
+                <h3 className={styles.header}>Recent Games</h3>
+                <p className={styles.summary}>No games played!</p>
+            </div>
+        );
+    }
+
     return (
         <div>
             <h3 className={styles.header}>Recent Games</h3>
