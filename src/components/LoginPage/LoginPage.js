@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LoginPage.module.css";
 import Header from "../Header/Header";
 import { useDispatch } from "react-redux";
@@ -15,6 +15,11 @@ export default function LoginPage({ type }) {
     const navigate = useNavigate();
     const isSignup = type === "signup";
     const titleText = isSignup ? "Sign Up" : "Log In";
+
+    useEffect(() => {
+        setSignupResponse("");
+        setLoginResponse("");
+    },[username, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

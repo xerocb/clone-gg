@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../LoginPage/LoginPage.module.css";
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
@@ -9,6 +9,10 @@ export default function AccountPage() {
     const username = useSelector(state => state.user.username);
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        setMessage("");
+    },[password])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
