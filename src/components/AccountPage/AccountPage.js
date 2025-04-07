@@ -12,6 +12,7 @@ export default function AccountPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMessage("");
         const response = await updatePassword(password);
         if (response.ok) {
             setMessage("Password successfully updated.");

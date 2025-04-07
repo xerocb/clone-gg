@@ -19,6 +19,7 @@ export default function LoginPage({ type }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isSignup) {
+            setSignupResponse("");
             const response = await attemptSignup(username, password);
             if (response.ok) {
                 setSignupResponse("Sign up successful! Please proceed to the login page and enter your credentials.");
@@ -27,6 +28,7 @@ export default function LoginPage({ type }) {
                 setSignupResponse(text);
             }
         } else {
+            setLoginResponse("");
             try {
                 await dispatch(login({ username, password })).unwrap();
                 navigate("/");
