@@ -18,7 +18,7 @@ export default function Summary() {
         playerAssists += detailsForPlayer[i].assists;
 
         const gameId = games[i].id;
-        const playerTeam = gameDetails[i].team;
+        const playerTeam = detailsForPlayer[i].team;
         const detailsForTeammates = gameDetails.filter(
             game => game.game_id === gameId && 
             game.team === playerTeam && 
@@ -46,7 +46,7 @@ export default function Summary() {
         championStats[champId].deaths += detailsForPlayer[i].deaths;
         championStats[champId].assists += detailsForPlayer[i].assists;
 
-        if (games[i].winning_team === detailsForPlayer[i].team) {
+        if (games[i].winning_team === playerTeam) {
             wins++;
             championStats[champId].wins++;
         }
