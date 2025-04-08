@@ -46,6 +46,9 @@ export default function Summary() {
         championStats[champId].deaths += detailsForPlayer[i].deaths;
         championStats[champId].assists += detailsForPlayer[i].assists;
 
+        console.log(games);
+        console.log(detailsForPlayer);
+
         if (games[i].winning_team === playerTeam) {
             wins++;
             championStats[champId].wins++;
