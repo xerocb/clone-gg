@@ -67,4 +67,5 @@
 .link {
     text-decoration: none;
     display: flex;
+    min-width: 0;
 }
