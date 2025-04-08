@@ -20,6 +20,7 @@
 .time {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 0.2rem;
 }
 
@@ -61,7 +62,12 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
-    max-height: 1rem;
+}
+
+.player .icon {
+    height: auto;
+    max-height: 2rem;
+    object-fit: contain;
 }
 
 .link {

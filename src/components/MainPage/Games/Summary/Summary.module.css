@@ -63,6 +63,9 @@
 
 .icon {
     width: 90%;
+    height: auto;
+    max-height: 3rem;
+    object-fit: contain;
 }
 
 .roles {
