@@ -60,7 +60,7 @@ export default function Game({ gameId }) {
     const minutes = Math.floor(gameLength / 60);
     const seconds = gameLength % 60;
     const teamKills = gameDetails.filter(d => d.team === playerDetails.team).reduce((acc, d) => acc + d.kills, 0);
-    const killPercentage = playerDetails.kills * 100 / teamKills;
+    const killPercentage = ((playerDetails.kills+playerDetails.assists) * 100 / teamKills).toFixed(0);
 
     return (
         <div className={`${styles.container} ${winLoss}`}>
