@@ -76,7 +76,7 @@ export default function Summary() {
                             {" " + (playerAssists/noOfGames).toFixed(1)}
                         </p>
                         <p className={styles.ratio}>{((playerKills+playerAssists)/playerDeaths).toFixed(2)} : 1</p>
-                        <p className={styles.pKill}>P/Kill {(playerKills*100/(playerKills+teamKills)).toFixed(0)}%</p>
+                        <p className={styles.pKill}>P/Kill {((playerKills+playerAssists)*100/(playerKills+teamKills)).toFixed(0)}%</p>
                     </div>
                 </div>
             </div>
