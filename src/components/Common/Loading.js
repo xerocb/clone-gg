@@ -6,7 +6,7 @@ export default function Loading({ rounded, margin, background }) {
     const hasMargin = margin ? styles.margin : "";
     return (
         <div className={`${styles.container} ${rounding} ${hasMargin}`}>
-            <p>Loading</p>
+            <div className={styles.spinner}></div>
         </div>
     );
 }
