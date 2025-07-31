@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getStatsByPlayerId } from "../../../api";
-import ELOLoading from "./ELOLoading";
-import ELOError from "./ELOError";
+import Loading from "../../Common/Loading";
+import Error from "../../Common/Error";
 import styles from "./ELO.module.css";
 
 export default function ELO() {
@@ -34,10 +34,10 @@ export default function ELO() {
     },[playerId]);
 
     if (loading) {
-        return <ELOLoading />;
+        return <Loading rounded="all" />
     }
     if (error) {
-        return <ELOError error={error} />;
+        return <Error error={error} rounded="all" />
     }
 
     if (Object.keys(stats).length === 0) {

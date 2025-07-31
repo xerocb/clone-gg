@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getRecentlyPlayedByPlayerId } from "../../../api";
-import RecentlyPlayedLoading from "./RecentlyPlayedLoading";
-import RecentlyPlayedError from "./RecentlyPlayedError";
+import Loading from "../../Common/Loading";
+import Error from "../../Common/Error";
 import Player from "./Player/Player";
 import styles from "./RecentlyPlayed.module.css";
 
@@ -33,25 +33,26 @@ export default function RecentlyPlayed() {
         getData();
     },[playerId]);
 
+    let content = (
+        <>
+            {players.slice(0, -1).map(player => <Player key={player.username} data={player} last={false} />)}
+            {players.slice(-1).map(player => <Player key={player.username} data={player} last={true} />)}
+        </>
+    );
+
     if (loading) {
-        return <RecentlyPlayedLoading />;
+        content = <Loading rounded="bot" />;
     }
     if (error) {
-        return <RecentlyPlayedError error={error} />;
+        content = <Error error={error} rounded="bot" />;
     }
     if (players.length === 0) {
-        return (
-            <div className={styles.container}>
-                <h3 className={styles.header}>Recently Played With</h3>
-                <p className={styles.player}>No games played!</p>
-            </div>
-        );
+        content = <p className={styles.player}>No games played!</p>;
     }
     return (
         <div className={styles.container}>
             <h3 className={styles.header}>Recently Played With</h3>
-            {players.slice(0, -1).map(player => <Player key={player.username} data={player} last={false} />)}
-            {players.slice(-1).map(player => <Player key={player.username} data={player} last={true} />)}
+            {content}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MainPageLoading from "./MainPageLoading";
-import MainPageError from "./MainPageError";
+import Loading from "../Common/Loading";
+import Error from "../Common/Error";
 import { getGameDetails, getGames, getPlayer } from "../../features/player/playerSlice";
 import Header from "../Header/Header";
 import User from "./User/User";
@@ -36,10 +36,21 @@ export default function MainPage() {
     },[dispatch, username])
 
     if (loading.player || loading.games || loading.gameDetails) {
-        return <MainPageLoading />;
+        return (
+            <>
+                <Header />
+                <Loading />
+            </>
+        );
     }
     if (error.player || error.games || error.gameDetails) {
-        return <MainPageError error={error} />;
+        const firstError = error.player ? error.player : error.games ? error.games : error.gameDetails;
+        return (
+            <>
+                <Header />
+                <Error error={firstError} />
+            </>
+        );
     }
 
     return (

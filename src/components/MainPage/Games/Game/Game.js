@@ -2,8 +2,8 @@ import { createSelector } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import GameLoading from "./GameLoading";
-import GameError from "./GameError";
+import Loading from "../../../Common/Loading";
+import Error from "../../../Common/Error";
 import styles from "./Game.module.css";
 import { getUsernamesByPlayerIds } from "../../../../api";
 import { Link } from "react-router-dom";
@@ -46,11 +46,11 @@ export default function Game({ gameId }) {
     },[]);
 
     if (loading) {
-        return <GameLoading />;
+        return <Loading rounded="all" margin />;
     }
 
     if (error) {
-        return <GameError error={error} />;
+        return <Error error={error} rounded="all" margin />;
     }
 
     const playerDetails = gameDetails.filter(d => d.player_id === playerId)[0];

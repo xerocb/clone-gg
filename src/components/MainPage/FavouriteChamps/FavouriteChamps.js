@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getFavChampDataByPlayerId } from "../../../api";
-import FavouriteChampsLoading from "./FavouriteChampsLoading";
-import FavouriteChampsError from "./FavouriteChampsError";
+import Loading from "../../Common/Loading";
+import Error from "../../Common/Error";
 import Champion from "./Champion/Champion";
 import styles from "./FavouriteChamps.module.css";
 
@@ -33,25 +33,26 @@ export default function FavouriteChamps() {
         getData();
     },[playerId]);
 
+    let content = (
+        <>
+            {champs.slice(0, -1).map(champ => <Champion key={champ.name} data={champ} last={false} />)}
+            {champs.slice(-1).map(champ => <Champion key={champ.name} data={champ} last={true} />)}
+        </>
+    );
+
     if (loading) {
-        return <FavouriteChampsLoading />;
+        content = <Loading rounded="bot" />
     }
     if (error) {
-        return <FavouriteChampsError error={error} />;
+        content = <Error error={error} rounded="bot" />
     }
     if (champs.length === 0) {
-        return (
-            <div className={styles.container}>
-                <h3 className={styles.header}>Favourite Champions</h3>
-                <p className={styles.champ}>No games played!</p>
-            </div>
-        );
+        content = <p className={styles.champ}>No games played!</p>;
     }
     return (
         <div className={styles.container}>
             <h3 className={styles.header}>Favourite Champions</h3>
-            {champs.slice(0, -1).map(champ => <Champion key={champ.name} data={champ} last={false} />)}
-            {champs.slice(-1).map(champ => <Champion key={champ.name} data={champ} last={true} />)}
+            {content}
         </div>
     );
 }
