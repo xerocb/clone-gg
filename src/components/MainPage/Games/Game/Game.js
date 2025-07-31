@@ -70,7 +70,7 @@ export default function Game({ gameId }) {
                 <p>{minutes}m {seconds}s</p>
             </div>
             <div className={styles.champ}>
-                <img src="/logo192.png" alt="Champion logo" className={styles.icon} />
+                <img src="/user.png" alt="Champion logo" className={styles.icon} />
                 <div>
                     <p className={styles.kda}>
                         {playerDetails.kills} / {playerDetails.deaths} / {playerDetails.assists}
@@ -89,7 +89,7 @@ export default function Game({ gameId }) {
                     name => 
                         <Link to={`/player/${name}`} className={styles.link} key={name}>
                             <div className={styles.player}>
-                                <img src="/logo192.png" alt="Champion logo" className={styles.icon} />
+                                <img src="/user.png" alt="Champion logo" className={styles.icon} />
                                 <p className={styles.name + (name === playerName ? " " + styles.own : "")}>
                                     {name}
                                 </p>

@@ -7,7 +7,7 @@ export default function User() {
 
     return (
         <div className={styles.container}>
-            <img src="/logo192.png" alt="Player Icon" className={styles.image} />
+            <img src="/user.png" alt="Player Icon" className={styles.image} />
             <div className={styles.username}>
                 <h2>{username}</h2>
             </div>

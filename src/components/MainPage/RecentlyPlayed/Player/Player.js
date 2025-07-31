@@ -10,7 +10,7 @@ export default function Player({ data, last }) {
     return (
         <div className={`${styles.container} ${style}`}>
             <Link to={`/player/${data.username}`} className={styles.link}>
-                <img src="/logo192.png" alt={`${data.username} icon`} className={styles.icon} />
+                <img src="/user.png" alt={`${data.username} icon`} className={styles.icon} />
             </Link>
             <Link to={`/player/${data.username}`} className={styles.link}>
                 <div className={styles.main}>

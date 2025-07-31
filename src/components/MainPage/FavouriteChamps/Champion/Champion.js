@@ -9,7 +9,7 @@ export default function Champion({ data, last }) {
 
     return (
         <div className={`${styles.container} ${style}`}>
-            <img src="/logo192.png" alt={`${data.name} icon`} className={styles.icon} />
+            <img src="/user.png" alt={`${data.name} icon`} className={styles.icon} />
             <div className={styles.main}>
                 <p className={`${styles.top} ${styles.name}`}>{data.name}</p>
                 <p className={styles.bottom}>CS {data.cs}</p>

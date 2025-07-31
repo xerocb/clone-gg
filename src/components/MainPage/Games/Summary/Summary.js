@@ -85,7 +85,7 @@ export default function Summary() {
                 <div className={styles.champs}>
                     {topChamps.map(champ =>
                         <div key={champ[0]} className={styles.champ}>
-                            <img src="/logo192.png" alt="Champion icon" className={styles.icon} />
+                            <img src="/user.png" alt="Champion icon" className={styles.icon} />
                             <p>{(champ[1].wins*100/champ[1].games).toFixed(0)}%</p>
                             <p>({champ[1].wins}W / {champ[1].games-champ[1].wins}L)</p>
                             <p>{((champ[1].kills+champ[1].assists)/champ[1].deaths).toFixed(2)}:1 KDA</p>
@@ -95,7 +95,7 @@ export default function Summary() {
                 <div className={styles.champsMobile}>
                     {topChamps.slice(0, 2).map(champ =>
                         <div key={champ[0]} className={styles.mobile}>
-                            <img src="/logo192.png" alt="Champion icon" className={styles.icon} />
+                            <img src="/user.png" alt="Champion icon" className={styles.icon} />
                             <p>{(champ[1].wins*100/champ[1].games).toFixed(0)}%</p>
                         </div>
                     )}
