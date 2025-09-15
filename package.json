@@ -1,7 +1,7 @@
 {
   "name": "clone-gg",
   "version": "0.1.0",
-  "homepage": "/clone-gg",
+  "homepage": "https://clonegg.ciaranbrady.co.uk",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
