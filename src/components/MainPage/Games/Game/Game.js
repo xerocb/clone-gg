@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import Loading from "../../../Common/Loading";
@@ -27,7 +27,7 @@ export default function Game({ gameId }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [usernames, setUsernames] = useState([]);
-    const ids = gameDetails.map(d => d.player_id);
+    const ids = useMemo(() => gameDetails.map(d => d.player_id), [gameDetails]);
     useEffect(() => {
         const getData = async () => {
             setLoading(true);
@@ -43,7 +43,7 @@ export default function Game({ gameId }) {
         };
 
         getData();
-    },[]);
+    },[ids]);
 
     if (loading) {
         return <Loading rounded="all" margin />;
