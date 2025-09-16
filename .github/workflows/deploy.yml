@@ -22,6 +22,8 @@ jobs:
         run: npm ci
 
       - name: Build React app
+        env:
+          REACT_APP_ROOT_URL: ${{ secrets.REACT_APP_ROOT_URL }}
         run: npm run build
 
       - name: Deploy via FTP
