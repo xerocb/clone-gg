@@ -8,6 +8,11 @@ import styles from "./Game.module.css";
 import { getUsernamesByPlayerIds } from "../../../../api";
 import { Link } from "react-router-dom";
 
+const playerIdSelectorFactory = (gameId) => createSelector(
+    state => state.player.gameDetails,
+    gameDetails => gameDetails.filter(d => d.game_id === gameId).map(d => d.player_id)
+);
+
 export default function Game({ gameId }) {
     const playerId = useSelector(state => state.player.player.id);
     const playerName = useSelector(state => state.player.player.username);
@@ -17,12 +22,11 @@ export default function Game({ gameId }) {
             games => games.filter(game => game.id === gameId)[0]
         )
     );
-    const allGameDetails = useSelector(state => state.player.gameDetails);
-    const gameDetails = useMemo(() => allGameDetails.filter(detail => detail.game_id === gameId), [allGameDetails, gameId]);
+    const playerIdSelector = useMemo(() => playerIdSelectorFactory(gameId), [gameId]);
+    const ids = useSelector(playerIdSelector);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [usernames, setUsernames] = useState([]);
-    const ids = gameDetails.map(d => d.player_id);
     useEffect(() => {
         const getData = async () => {
             setLoading(true);
