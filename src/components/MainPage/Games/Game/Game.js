@@ -8,9 +8,9 @@ import styles from "./Game.module.css";
 import { getUsernamesByPlayerIds } from "../../../../api";
 import { Link } from "react-router-dom";
 
-const playerIdSelectorFactory = (gameId) => createSelector(
+const gameDetailSelectorFactory = (gameId) => createSelector(
     state => state.player.gameDetails,
-    gameDetails => gameDetails.filter(d => d.game_id === gameId).map(d => d.player_id)
+    gameDetails => gameDetails.filter(d => d.game_id === gameId)
 );
 
 export default function Game({ gameId }) {
@@ -22,8 +22,8 @@ export default function Game({ gameId }) {
             games => games.filter(game => game.id === gameId)[0]
         )
     );
-    const playerIdSelector = useMemo(() => playerIdSelectorFactory(gameId), [gameId]);
-    const ids = useSelector(playerIdSelector);
+    const gameDetailSelector = useMemo(() => gameDetailSelectorFactory(gameId), [gameId]);
+    const gameDetails = useSelector(gameDetailSelector);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [usernames, setUsernames] = useState([]);
@@ -31,7 +31,7 @@ export default function Game({ gameId }) {
         const getData = async () => {
             setLoading(true);
             try {
-                const response = await getUsernamesByPlayerIds(ids);
+                const response = await getUsernamesByPlayerIds(gameDetails.map(d => d.player_id));
                 const data = await response.json();
                 setUsernames(data);
             } catch(err) {
@@ -42,7 +42,7 @@ export default function Game({ gameId }) {
         };
 
         getData();
-    },[ids]);
+    },[gameDetails]);
 
     if (loading) {
         return <Loading rounded="all" margin />;
