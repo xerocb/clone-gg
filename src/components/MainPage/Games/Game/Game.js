@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
-import React, { useEffect, useState } from "react";
-import { useSelector, shallowEqual } from "react-redux";
+import React, { useEffect, useState, useMemo } from "react";
+import { useSelector } from "react-redux";
 import moment from "moment";
 import Loading from "../../../Common/Loading";
 import Error from "../../../Common/Error";
@@ -17,14 +17,8 @@ export default function Game({ gameId }) {
             games => games.filter(game => game.id === gameId)[0]
         )
     );
-    const gameDetails = useSelector(
-        createSelector(
-            state => state.player.gameDetails,
-            details => details.filter(detail => detail.game_id === gameId)
-        ),
-	shallowEqual
-    );
-
+    const allGameDetails = useSelector(state => state.player.gameDetails);
+    const gameDetails = useMemo(() => allGameDetails.filter(detail => detail.game_id === gameId), [allGameDetails, gameId]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [usernames, setUsernames] = useState([]);
