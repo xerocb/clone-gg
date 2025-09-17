@@ -30,7 +30,7 @@ base_date = datetime.now()
 
 for i in range(NUM_GAMES):
     start_offset = timedelta(days=random.randint(0, 30), hours=random.randint(0, 23), minutes=random.randint(0, 59), seconds=random.randint(0, 59))
-    game_start = base_date + start_offset
+    game_start = base_date - start_offset
 
     game_duration = timedelta(minutes=random.randint(0, 59), seconds=random.randint(0, 59))
     game_end = game_start + game_duration
@@ -53,6 +53,7 @@ with open("generate-games.sql", "w") as f:
 
 ROLES = ["top", "jgl", "mid", "bot", "sup"]
 TEAMS = ["blue", "red"]
+NUM_PLAYERS = 51
 
 games = []
 game_id = 1
@@ -78,7 +79,7 @@ for game_id, start, end in games:
     for team in TEAMS:
         for role in ROLES:
             while True:
-                player_id = random.randint(1, 50)
+                player_id = random.randint(1, NUM_PLAYERS)
                 if player_id not in used_player_ids:
                     used_player_ids.add(player_id)
                     break
