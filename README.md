@@ -1,10 +1,10 @@
 # Clone.GG
 
-Front-end for a full-stack PERN app designed to mimic the functionality of https://op.gg using mock player data.
+Front end for a full-stack PERN app designed to mimic the functionality of https://op.gg using mock player data.
 
 NOTE: While originally built for a Postgres server, this has since been migrated to a MySQL server.
 
-The back-end can be found at https://github.com/xerocb/clone-gg-api.
+The API for interfacing with the back end can be found at https://github.com/xerocb/clone-gg-api.
 
 The application is hosted at https://clonegg.ciaranbrady.co.uk.
 
