@@ -42,11 +42,9 @@ export default function FavouriteChamps() {
 
     if (loading) {
         content = <Loading rounded="bot" />
-    }
-    if (error) {
+    } else if (error) {
         content = <Error error={error} rounded="bot" />
-    }
-    if (champs.length === 0) {
+    } else if (champs.length === 0) {
         content = <p className={styles.champ}>No games played!</p>;
     }
     return (

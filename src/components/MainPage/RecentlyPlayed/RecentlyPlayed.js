@@ -42,11 +42,9 @@ export default function RecentlyPlayed() {
 
     if (loading) {
         content = <Loading rounded="bot" />;
-    }
-    if (error) {
+    } else if (error) {
         content = <Error error={error} rounded="bot" />;
-    }
-    if (players.length === 0) {
+    } else if (players.length === 0) {
         content = <p className={styles.player}>No games played!</p>;
     }
     return (
