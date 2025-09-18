@@ -16,7 +16,7 @@ The application is hosted at https://clonegg.ciaranbrady.co.uk.
 ## Known Issues
 
 - Refreshing the page anywhere but on the home page results in a 404 Not Found error.
-- The back-end is hosted using a free instance of Koyeb and is spun down with inactivity, which can cause the first request made to take a long time to receive a response.
+- The back end is hosted using a free instance of Koyeb and is spun down with inactivity, which can cause the first request made to take a long time to receive a response.
 
 ## Future Work
 
