@@ -90,9 +90,9 @@ for game_id, start, end in games:
                     used_champion_ids.add(champion_id)
                     break
 
-            kpm = random.uniform(0, 2)
-            dpm = random.uniform(0, 2)
-            apm = random.uniform(0, 2)
+            kpm = random.uniform(0, 0.5)
+            dpm = random.uniform(0, 0.5)
+            apm = random.uniform(0, 0.5)
             kills = int(round(kpm * game_duration))
             deaths = int(round(dpm * game_duration))
             assists = int(round(apm * game_duration))
